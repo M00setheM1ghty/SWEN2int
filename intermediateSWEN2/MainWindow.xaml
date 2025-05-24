@@ -5,8 +5,53 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:intermediateSWEN2"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="MainWindow" Height="1000" Width="800">
 
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <!-- Headline -->
+            <RowDefinition Height="Auto"/>
+            <!-- Menu -->
+            <RowDefinition Height="Auto"/>
+            <!-- Search Bar -->
+            <RowDefinition Height="*"/>
+            <!-- Main Content -->
+        </Grid.RowDefinitions>
+
+        <!-- Headline -->
+        <TextBlock Grid.Row="0" Text="Tour Planner"
+                   FontSize="24" FontWeight="Bold"
+                   Margin="10" HorizontalAlignment="Center"/>
+
+        <!-- Menu -->
+        <Menu Grid.Row="1">
+            <MenuItem Header="File"/>
+            <MenuItem Header="Edit"/>
+            <MenuItem Header="Options"/>
+        </Menu>
+
+        <!-- Search Bar Placeholder -->
+        <TextBlock Grid.Row="2" Text="Search bar"
+                   Margin="10" FontStyle="Italic" Foreground="Gray"/>
+
+        <!-- Main Content Area -->
+        <Grid Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="3*"/>
+            </Grid.ColumnDefinitions>
+
+            <Border Grid.Column="0" BorderBrush="Gray" BorderThickness="1" Margin="5">
+                <TextBlock Text="Left Content Area" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Border>
+
+            <Border Grid.Column="1" BorderBrush="Gray" BorderThickness="1" Margin="5">
+                <TextBlock Text="Right Content Area" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Border>
+        </Grid>
     </Grid>
+
+
 </Window>
