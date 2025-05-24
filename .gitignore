@@ -1,0 +1,88 @@
+## Ignore Visual Studio temporary files, build results, and
+# Build results
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+*.log
+*.vs
+
+.vs/
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Mono Auto Generated Files
+mono_crash.*
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# VS Code settings
+.vscode/
+
+# Rider settings
+.idea/
+
+# DotCover
+*.dotCover
+
+# Backup & report files
+*.bak
+*.orig
+*.tmp
+*.tmp_proj
+
+# NuGet
+*.nupkg
+*.snupkg
+.nuget/
+packages/
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+# StyleCop
+StyleCopReport.xml
+
+# Files built by Visual Studio
+*.dll
+*.exe
+*.app
+*.pdb
+*.cache
+*.mdb
+
+# Publish output
+publish/
+
+# WPF-specific
+*.g.cs
+*.g.i.cs
+*.xaml.cs
+
+# Local test results
+TestResults/
+*.trx
+
+# Resharper
+_ReSharper*/
+*.[Rr]e[Ss]harper
+
+# DotTrace
+*.dotTrace
+
+# NCrunch
+*.ncrunch*
+.*crunch*.local.xml
+
+# Visual Studio profiler
+*.vsp
+*.vspx
+*.sap
