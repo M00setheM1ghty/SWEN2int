@@ -29,7 +29,7 @@
         <TextBox Text="{Binding LogComment}" Grid.Row="1" Grid.Column="1"/>
 
         <TextBlock Text="Difficulty:" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center"/>
-        <ComboBox SelectedItem="{Binding LogDifficulty}" SelectedValuePath="Content" Grid.Row="2" Grid.Column="1">
+        <ComboBox SelectedValue="{Binding LogDifficulty}" SelectedValuePath="Content" Grid.Row="2" Grid.Column="1">
             <ComboBoxItem Content="Easy"/>
             <ComboBoxItem Content="Medium"/>
             <ComboBoxItem Content="Hard"/>
