@@ -101,9 +101,22 @@ namespace intermediateSWEN2.Viewmodels
 
         private void AddTour(object? parameter)
         {
+            // Skip the dialog window for testing purposes
+            if (parameter is bool skipDialog && skipDialog)
+            {
+                AddTourCore();
+                return;
+            }
+
             var addTourWindow = new Popups.AddTour();
             addTourWindow.DataContext = this;
             _ = addTourWindow.ShowDialog();
+
+            AddTourCore();
+        }
+
+        private void AddTourCore()
+        {
             // Validate all fields before adding
             if (!string.IsNullOrWhiteSpace(this[nameof(NewTourName)]) ||
                 !string.IsNullOrWhiteSpace(this[nameof(NewTourDescription)]) ||
