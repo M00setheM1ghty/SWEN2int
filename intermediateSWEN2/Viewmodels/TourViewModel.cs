@@ -44,10 +44,8 @@ namespace intermediateSWEN2.Viewmodels
         public TourViewModel()
         {
             AddTourCommand = new RelayCommand(AddTour);
-            //OpenAddTourWindowCommand = new RelayCommand(OpenAddTourWindow);
             DeleteTourCommand = new RelayCommand(DeleteTour);
             ModifyTourCommand = new RelayCommand(ModifyTour);
-            //OpenModifyTourWindowCommand = new RelayCommand(OpenModifyTourWindow);
         }
 
         public string this[string columnName]
