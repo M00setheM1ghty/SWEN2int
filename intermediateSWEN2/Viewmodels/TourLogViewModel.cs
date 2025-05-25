@@ -131,6 +131,7 @@ namespace SWEN2.ViewModels
             {
                 SelectedTour.Logs.Remove(SelectedTourLog);
                 OnPropertyChanged(nameof(SelectedTourLogs));
+                RefreshSelectedTourLogs();
             }
         }
 
