@@ -13,7 +13,7 @@
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal" Grid.Row="0">
             <TextBlock Text="Tours" Margin="5"/>
-            <Button Style="{StaticResource UniformButtonStyle}" Content="Add Tour" Margin="5" Command="{Binding OpenAddTourLogCommand}"/>
+            <Button Style="{StaticResource UniformButtonStyle}" Content="Add Tour" Margin="5" Command="{Binding AddTourCommand}"/>
             <Button Style="{StaticResource UniformButtonStyle}" Content="Edit Tour" Margin="5" Command="{Binding OpenModifyTourWindowCommand}"/>
             <Button Style="{StaticResource UniformButtonStyle}" Content="Delete Tour" Margin="5" Command="{Binding DeleteTourCommand}"/>
         </StackPanel>

@@ -48,8 +48,7 @@
         <TextBlock Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Foreground="Red" Text="{Binding Error}" />
 
         <StackPanel Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Right">
-            <Button Style="{StaticResource UniformButtonStyle}" Content="Add" Width="80" Margin="0,0,10,0" Command="{Binding AddTourCommand}" IsDefault="True"/>
-            <Button Style="{StaticResource UniformButtonStyle}" Content="Cancel" Width="80" IsCancel="True"/>
+            <Button Style="{StaticResource UniformButtonStyle}" Content="Add" Width="80" IsCancel="True"/>
         </StackPanel>
     </Grid>
 </Window>

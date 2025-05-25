@@ -20,9 +20,9 @@ namespace intermediateSWEN2.Viewmodels
         public string NewTourTransportType { get; set; } = "";
 
         public string Error { get; private set; } = "";
+        private Tour? _selectedTour; 
 
 
-        private Tour? _selectedTour;
         public Tour? SelectedTour
         {
             get => _selectedTour;
@@ -32,6 +32,7 @@ namespace intermediateSWEN2.Viewmodels
                 OnPropertyChanged();
             }
         }
+
 
         public ICommand AddTourCommand { get; }
         public ICommand DeleteTourCommand { get; }
@@ -80,6 +81,9 @@ namespace intermediateSWEN2.Viewmodels
 
         private void AddTour(object? parameter)
         {
+            var addTourWindow = new Popups.AddTour();
+            addTourWindow.DataContext = this;
+            bool? result = addTourWindow.ShowDialog();
             // Validate all fields before adding
             if (!string.IsNullOrWhiteSpace(this[nameof(NewTourName)]) ||
                 !string.IsNullOrWhiteSpace(this[nameof(NewTourDescription)]) ||
