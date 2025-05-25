@@ -39,7 +39,7 @@
 
         <TextBlock Text="Transport Type:" Grid.Row="4" Grid.Column="0" Margin="0,0,10,10" VerticalAlignment="Center"/>
         <ComboBox Grid.Row="4" Grid.Column="1" Margin="0,0,0,10"
-          SelectedItem="{Binding NewTourTransportType, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnValidationError=True}">
+          SelectedValue="{Binding NewTourTransportType, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" SelectedValuePath="Content">
             <ComboBoxItem Content="Car"/>
             <ComboBoxItem Content="Bike"/>
             <ComboBoxItem Content="Walk"/>

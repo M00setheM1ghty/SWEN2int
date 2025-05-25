@@ -53,12 +53,14 @@ namespace SWEN2.ViewModels
         public ICommand AddTourLogCommand { get; }
         public ICommand DeleteTourLogCommand { get; }
         public ICommand ModifyTourLogCommand { get; }
+        public ICommand ResetTourLogInputCommand { get; }
 
         public TourLogViewmodel()
         {
             AddTourLogCommand = new RelayCommand(AddTourLog);
             DeleteTourLogCommand = new RelayCommand(DeleteTourLog);
             ModifyTourLogCommand = new RelayCommand(ModifyTourLog);
+            ResetTourLogInputCommand = new RelayCommand(_ => ResetTourLogInput());
         }
 
         public string this[string columnName]
@@ -172,7 +174,7 @@ namespace SWEN2.ViewModels
 
         private bool CanAddTourLog(object? parameter)
         {
-            return !string.IsNullOrWhiteSpace(this[nameof(LogDate)]) ||
+            return string.IsNullOrWhiteSpace(this[nameof(LogDate)]) ||
                    !string.IsNullOrWhiteSpace(this[nameof(LogComment)]) ||
                    !string.IsNullOrWhiteSpace(this[nameof(LogDifficulty)]) ||
                    !string.IsNullOrWhiteSpace(this[nameof(LogTotalDistance)]) ||
