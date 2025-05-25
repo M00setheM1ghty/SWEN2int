@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:intermediateSWEN2.Views"
+             xmlns:local="clr-namespace:intermediateSWEN2.Views" xmlns:viewmodels="clr-namespace:SWEN2.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:TourLogViewmodel}"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     
@@ -18,11 +18,15 @@
             <Button Style="{StaticResource UniformButtonStyle}" Content="Edit Tour Log" Margin="5" Command="{Binding ModifyTourLogCommand}"/>
             <Button Style="{StaticResource UniformButtonStyle}" Content="Delete Tour Log" Margin="5" Command="{Binding DeleteTourLogCommand}"/>
         </StackPanel>
-        <ListView Grid.Row="1" ItemsSource="{Binding Tours}" 
-              SelectedItem="{Binding SelectedTour}">
+        <ListView Grid.Row="1" ItemsSource="{Binding SelectedTourLogs}">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Tour Logs" DisplayMemberBinding="{Binding Name}" Width="200"/>
+                    <GridViewColumn Header="Date" DisplayMemberBinding="{Binding DateTime}" Width="120"/>
+                    <GridViewColumn Header="Comment" DisplayMemberBinding="{Binding Comment}" Width="200"/>
+                    <GridViewColumn Header="Difficulty" DisplayMemberBinding="{Binding Difficulty}" Width="100"/>
+                    <GridViewColumn Header="Distance" DisplayMemberBinding="{Binding TotalDistance}" Width="80"/>
+                    <GridViewColumn Header="Time" DisplayMemberBinding="{Binding TotalTime}" Width="100"/>
+                    <GridViewColumn Header="Rating" DisplayMemberBinding="{Binding Rating}" Width="60"/>
                 </GridView>
             </ListView.View>
         </ListView>
