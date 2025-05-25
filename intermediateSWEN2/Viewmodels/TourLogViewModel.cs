@@ -121,8 +121,7 @@ namespace SWEN2.ViewModels
                 SelectedTour.OnPropertyChanged(nameof(SelectedTour.Logs));
                 RefreshSelectedTourLogs();
             }
-            Error = "";
-            OnPropertyChanged(nameof(Error));
+            ResetTourLogInput();
         }
 
         private void DeleteTourLog(object? parameter)
@@ -133,6 +132,7 @@ namespace SWEN2.ViewModels
                 OnPropertyChanged(nameof(SelectedTourLogs));
                 RefreshSelectedTourLogs();
             }
+            ResetTourLogInput();
         }
 
         private void ModifyTourLog(object? parameter)
@@ -160,25 +160,24 @@ namespace SWEN2.ViewModels
 
                 SelectedTour.OnPropertyChanged(nameof(SelectedTour.Logs));
                 RefreshSelectedTourLogs();
-                Error = "";
-                OnPropertyChanged(nameof(Error));
             }
             else
             {
                 Error = "No tour log selected for modification.";
                 OnPropertyChanged(nameof(Error));
             }
+            ResetTourLogInput();
         }
 
 
         private bool CanAddTourLog(object? parameter)
         {
-            return string.IsNullOrWhiteSpace(this[nameof(LogDate)]) &&
-                   string.IsNullOrWhiteSpace(this[nameof(LogComment)]) &&
-                   string.IsNullOrWhiteSpace(this[nameof(LogDifficulty)]) &&
-                   string.IsNullOrWhiteSpace(this[nameof(LogTotalDistance)]) &&
-                   string.IsNullOrWhiteSpace(this[nameof(LogTotalTime)]) &&
-                   string.IsNullOrWhiteSpace(this[nameof(LogRating)]);
+            return !string.IsNullOrWhiteSpace(this[nameof(LogDate)]) ||
+                   !string.IsNullOrWhiteSpace(this[nameof(LogComment)]) ||
+                   !string.IsNullOrWhiteSpace(this[nameof(LogDifficulty)]) ||
+                   !string.IsNullOrWhiteSpace(this[nameof(LogTotalDistance)]) ||
+                   !string.IsNullOrWhiteSpace(this[nameof(LogTotalTime)]) ||
+                   !string.IsNullOrWhiteSpace(this[nameof(LogRating)]);
         }
 
         private void RefreshSelectedTourLogs()
@@ -191,6 +190,24 @@ namespace SWEN2.ViewModels
             {
                 SelectedTourLogs = new ObservableCollection<TourLog>();
             }
+        }
+
+        private void ResetTourLogInput()
+        {
+            LogDate = DateTime.Now;
+            LogComment = "";
+            LogDifficulty = "Medium";
+            LogTotalDistance = "0";
+            LogTotalTime = "00:00:00";
+            LogRating = "0";
+            Error = "";
+            OnPropertyChanged(nameof(LogDate));
+            OnPropertyChanged(nameof(LogComment));
+            OnPropertyChanged(nameof(LogDifficulty));
+            OnPropertyChanged(nameof(LogTotalDistance));
+            OnPropertyChanged(nameof(LogTotalTime));
+            OnPropertyChanged(nameof(LogRating));
+            OnPropertyChanged(nameof(Error));
         }
 
 

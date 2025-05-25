@@ -21,6 +21,17 @@ namespace intermediateSWEN2.Viewmodels
 
         public string Error { get; private set; } = "";
 
+        private ObservableCollection<Tour> _selectedTourCollection = new();
+        public ObservableCollection<Tour> SelectedTourCollection
+        {
+            get => _selectedTourCollection;
+            set
+            {
+                _selectedTourCollection = value;
+                OnPropertyChanged();
+            }
+        }
+
         private Tour? _selectedTour;
         public Tour? SelectedTour
         {
@@ -31,11 +42,19 @@ namespace intermediateSWEN2.Viewmodels
                 {
                     _selectedTour = value;
                     OnPropertyChanged();
+                    UpdateSelectedTourCollection();
                     SelectedTourChanged?.Invoke(this, EventArgs.Empty);
                 }
             }
         }
         public event EventHandler? SelectedTourChanged;
+
+        private void UpdateSelectedTourCollection()
+        {
+            SelectedTourCollection.Clear();
+            if (SelectedTour != null)
+                SelectedTourCollection.Add(SelectedTour);
+        }
 
 
         public ICommand AddTourCommand { get; }
