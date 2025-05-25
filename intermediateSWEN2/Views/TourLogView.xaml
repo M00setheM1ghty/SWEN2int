@@ -1,0 +1,30 @@
+﻿<UserControl x:Class="intermediateSWEN2.Views.TourLogView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:intermediateSWEN2.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal" Grid.Row="0">
+            <TextBlock Text="Tours" Margin="5"/>
+            <Button Style="{StaticResource UniformButtonStyle}" Content="Add Tour Log" Margin="5" Command="{Binding AddTourLogCommand}"/>
+            <Button Style="{StaticResource UniformButtonStyle}" Content="Edit Tour Log" Margin="5" Command="{Binding ModifyTourLogCommand}"/>
+            <Button Style="{StaticResource UniformButtonStyle}" Content="Delete Tour Log" Margin="5" Command="{Binding DeleteTourLogCommand}"/>
+        </StackPanel>
+        <ListView Grid.Row="1" ItemsSource="{Binding Tours}" 
+              SelectedItem="{Binding SelectedTour}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Tour Logs" DisplayMemberBinding="{Binding Name}" Width="200"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</UserControl>
