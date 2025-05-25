@@ -1,10 +1,15 @@
 Protocol:
 
+Usage:
+- for the add,modify and delete buttons to work a tour or tour log has to be selected!
+
 Known Issues:
 - Input sanitation doesnt work quite as intended for addtourlog
 	-> does not crash but editing of errors and showing wrong errors does not work, goes back to default if input is erroneous
 - Popup windows always close no matter if the input is correct or not 
 	-> depending on wether it was correct or not the tour or log is added
 - if the popup is opened again and the previous input was wrong the error message will show that. if it was in addtourlog the form has to be reset with the reset button
-- image source path is linked in route tab, but when building and executing cannot be found for some reason
-	
+- image source path is linked in route tab, but when building and executing cannot be found sometimes for some reason
+- all add,modify buttons execute when the window is closed if the input is correct. there is no "cancelling" of popups
+
+
