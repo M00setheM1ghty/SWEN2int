@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:intermediateSWEN2"
         xmlns:views="clr-namespace:intermediateSWEN2.Views" xmlns:viewmodels="clr-namespace:intermediateSWEN2.Viewmodels" d:DataContext="{d:DesignInstance Type=viewmodels:MainViewModel}"
         mc:Ignorable="d"
-        Title="MainWindow" Height="1000" Width="1200">
+        Title="MainWindow" Height="800" Width="1200">
 
 
     <Grid>
@@ -41,19 +41,22 @@
         <Grid Grid.Row="3">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="2*"/>
-                <ColumnDefinition Width="3*"/>
-                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="5*"/>
             </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
 
-            <Border Grid.Column="0" BorderBrush="Gray" BorderThickness="1" Margin="5">
+            <Border Grid.Column="0" Grid.RowSpan="2" BorderBrush="Gray" BorderThickness="1" Margin="5">
                 <views:TourView DataContext="{Binding TourViewModel}" />
             </Border>
 
-            <Border Grid.Column="1" BorderBrush="Gray" BorderThickness="1" Margin="5">
+            <Border Grid.Column="1" Grid.Row="0" BorderBrush="Gray" BorderThickness="1" Margin="5">
                 <views:TourLogView DataContext="{Binding TourLogViewModel}" />
             </Border>
 
-            <Border Grid.Column="2" BorderBrush="Gray" BorderThickness="1" Margin="5">
+            <Border Grid.Column="1" Grid.Row="1" BorderBrush="Gray" BorderThickness="1" Margin="5">
                 <views:TourViewDetail DataContext="{Binding TourViewModel}" />
             </Border>
         </Grid>

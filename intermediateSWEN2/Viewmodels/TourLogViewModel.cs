@@ -137,8 +137,39 @@ namespace SWEN2.ViewModels
 
         private void ModifyTourLog(object? parameter)
         {
+            if (SelectedTour != null && SelectedTourLog != null)
+            {
+                // Open modify dialog (optional, similar to AddTourLog)
+                var modifyTourLogWindow = new intermediateSWEN2.Popups.ModifiyTourLog();
+                modifyTourLogWindow.DataContext = this;
+                _ = modifyTourLogWindow.ShowDialog();
 
+                // Update only fields that are not empty or default
+                if (!string.IsNullOrWhiteSpace(LogComment))
+                    SelectedTourLog.Comment = LogComment;
+                if (!string.IsNullOrWhiteSpace(LogDifficulty))
+                    SelectedTourLog.Difficulty = LogDifficulty;
+                if (int.TryParse(LogTotalDistance, out var distance))
+                    SelectedTourLog.TotalDistance = distance;
+                if (TimeSpan.TryParse(LogTotalTime, out var time))
+                    SelectedTourLog.TotalTime = time;
+                if (!string.IsNullOrWhiteSpace(LogRating))
+                    SelectedTourLog.Rating = LogRating;
+                if (LogDate != default)
+                    SelectedTourLog.DateTime = LogDate;
+
+                SelectedTour.OnPropertyChanged(nameof(SelectedTour.Logs));
+                RefreshSelectedTourLogs();
+                Error = "";
+                OnPropertyChanged(nameof(Error));
+            }
+            else
+            {
+                Error = "No tour log selected for modification.";
+                OnPropertyChanged(nameof(Error));
+            }
         }
+
 
         private bool CanAddTourLog(object? parameter)
         {
