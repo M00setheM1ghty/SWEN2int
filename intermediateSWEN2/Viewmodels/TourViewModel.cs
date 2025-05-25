@@ -32,15 +32,6 @@ namespace intermediateSWEN2.Viewmodels
                     _selectedTour = value;
                     OnPropertyChanged();
                     SelectedTourChanged?.Invoke(this, EventArgs.Empty);
-                    // Debug output
-                    if (_selectedTour != null)
-                    {
-                        System.Diagnostics.Debug.WriteLine($"SelectedTour: Name={_selectedTour.Name}, From={_selectedTour.From}, To={_selectedTour.To}");
-                    }
-                    else
-                    {
-                        System.Diagnostics.Debug.WriteLine("SelectedTour is null");
-                    }
                 }
             }
         }
@@ -66,7 +57,7 @@ namespace intermediateSWEN2.Viewmodels
                 From = "Central Station",
                 To = "Museum District",
                 TransportType = "Walk",
-                Logs = new List<TourLog>
+                Logs = new ObservableCollection<TourLog>
     {
         new TourLog
         {
@@ -76,7 +67,7 @@ namespace intermediateSWEN2.Viewmodels
             Difficulty = "Easy",
             TotalDistance = 5,
             TotalTime = TimeSpan.FromHours(1.5),
-            Rating = 5
+            Rating = "4"
         },
         new TourLog
         {
@@ -86,7 +77,7 @@ namespace intermediateSWEN2.Viewmodels
             Difficulty = "Medium",
             TotalDistance = 5,
             TotalTime = TimeSpan.FromHours(2),
-            Rating = 4
+            Rating = "4"
         }
     }
             });
@@ -97,7 +88,7 @@ namespace intermediateSWEN2.Viewmodels
                 From = "Downtown",
                 To = "Mountain Peak",
                 TransportType = "Car",
-                Logs = new List<TourLog>
+                Logs = new ObservableCollection<TourLog>
     {
         new TourLog
         {
@@ -107,7 +98,7 @@ namespace intermediateSWEN2.Viewmodels
             Difficulty = "Hard",
             TotalDistance = 50,
             TotalTime = TimeSpan.FromHours(3),
-            Rating = 5
+            Rating = "1"
         }
     }
             });
@@ -182,7 +173,7 @@ namespace intermediateSWEN2.Viewmodels
                 From = NewTourFrom,
                 To = NewTourTo,
                 TransportType = NewTourTransportType,
-                Logs = new List<TourLog>()
+                Logs = new ObservableCollection<TourLog>()
             };
             Tours.Add(newTour);
 

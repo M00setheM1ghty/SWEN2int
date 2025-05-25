@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -53,7 +54,7 @@ namespace intermediateSWEN2.Models
         public TimeSpan EstimatedTime { get; set; } = TimeSpan.Zero;
         public string RouteImagePath { get; set; } = "placeholder.png";
 
-        public List<TourLog> Logs { get; set; } = new();
+        public ObservableCollection<TourLog> Logs { get; set; } = new();
 
         protected void OnPropertyChanged([CallerMemberName] string? propertyName = null)
             => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));

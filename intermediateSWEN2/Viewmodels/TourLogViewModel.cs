@@ -4,9 +4,11 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls.Primitives;
 using System.Windows.Input;
 using intermediateSWEN2.Models;
 using intermediateSWEN2.Viewmodels;
+using intermediateSWEN2.Popups;
 
 
 namespace SWEN2.ViewModels
@@ -18,10 +20,24 @@ namespace SWEN2.ViewModels
         public string LogDifficulty { get; set; } = "Medium";
         public string LogTotalDistance { get; set; } = "0";
         public string LogTotalTime { get; set; } = "00:00:00";
-        public int LogRating { get; set; } = 0;
+        public string LogRating { get; set; } = "0";
         public string Error { get; private set; } = "";
 
         public Tour? SelectedTour;
+
+        private TourLog _selectedTourLog;
+        public TourLog? SelectedTourLog
+        {
+            get => _selectedTourLog;
+            set
+            {
+                if (_selectedTourLog != value)
+                {
+                    _selectedTourLog = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
 
         private ObservableCollection<TourLog> _selectedTourLogs = new();
         public ObservableCollection<TourLog> SelectedTourLogs
@@ -46,29 +62,33 @@ namespace SWEN2.ViewModels
         }
         private void AddTourLog(object? parameter)
         {
+            var addTourLogWindow = new intermediateSWEN2.Popups.AddTourLog();
+            addTourLogWindow.DataContext = this;
+            _ = addTourLogWindow.ShowDialog();
+
             if (SelectedTour != null)
             {
                 var newLog = new TourLog
                 {
-                    Id = 1,
-                    DateTime = DateTime.Now.AddDays(-1),
-                    Comment = "Sunny day, easy drive.",
-                    Difficulty = "Easy",
-                    TotalDistance = 120,
-                    TotalTime = TimeSpan.FromHours(2),
-                    Rating = 4
+                    DateTime = LogDate,
+                    Comment = LogComment,
+                    Difficulty = LogDifficulty,
+                    TotalDistance = int.TryParse(LogTotalDistance, out var distance) ? distance : 0,
+                    TotalTime = TimeSpan.TryParse(LogTotalTime, out var time) ? time : TimeSpan.Zero,
+                    Rating = LogRating
                 };
+
                 SelectedTour.Logs.Add(newLog);
             }
         }
 
         private void DeleteTourLog(object? parameter)
         {
-            //if (SelectedTour != null && SelectedTourLog != null)
-            //{
-            //    SelectedTour.Logs.Remove(SelectedTourLog);
-            //    OnPropertyChanged(nameof(SelectedTourLogs));
-            //}
+            if (SelectedTour != null && SelectedTourLog != null)
+            {
+                SelectedTour.Logs.Remove(SelectedTourLog);
+                OnPropertyChanged(nameof(SelectedTourLogs));
+            }
         }
 
         private void ModifyTourLog(object? parameter)

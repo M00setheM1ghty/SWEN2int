@@ -18,7 +18,7 @@
             <Button Style="{StaticResource UniformButtonStyle}" Content="Edit Tour Log" Margin="5" Command="{Binding ModifyTourLogCommand}"/>
             <Button Style="{StaticResource UniformButtonStyle}" Content="Delete Tour Log" Margin="5" Command="{Binding DeleteTourLogCommand}"/>
         </StackPanel>
-        <ListView Grid.Row="1" ItemsSource="{Binding SelectedTourLogs}">
+        <ListView Grid.Row="1" ItemsSource="{Binding SelectedTourLogs}" SelectedItem="{Binding SelectedTourLog}">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Date" DisplayMemberBinding="{Binding DateTime}" Width="120"/>
