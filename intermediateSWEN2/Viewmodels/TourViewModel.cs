@@ -45,6 +45,26 @@ namespace intermediateSWEN2.Viewmodels
             AddTourCommand = new RelayCommand(AddTour);
             DeleteTourCommand = new RelayCommand(DeleteTour);
             ModifyTourCommand = new RelayCommand(ModifyTour);
+
+            // Add default tours
+            Tours.Add(new Tour
+            {
+                Name = "City Explorer",
+                Description = "A tour through the city's main attractions.",
+                From = "Central Station",
+                To = "Museum District",
+                TransportType = "Walk",
+                Logs = new List<TourLog>()
+            });
+            Tours.Add(new Tour
+            {
+                Name = "Mountain Adventure",
+                Description = "A scenic drive to the mountains.",
+                From = "Downtown",
+                To = "Mountain Peak",
+                TransportType = "Car",
+                Logs = new List<TourLog>()
+            });
         }
 
         public string this[string columnName]
@@ -83,7 +103,7 @@ namespace intermediateSWEN2.Viewmodels
         {
             var addTourWindow = new Popups.AddTour();
             addTourWindow.DataContext = this;
-            bool? result = addTourWindow.ShowDialog();
+            _ = addTourWindow.ShowDialog();
             // Validate all fields before adding
             if (!string.IsNullOrWhiteSpace(this[nameof(NewTourName)]) ||
                 !string.IsNullOrWhiteSpace(this[nameof(NewTourDescription)]) ||
@@ -130,6 +150,10 @@ namespace intermediateSWEN2.Viewmodels
 
         private void ModifyTour(object? parameter)
         {
+            var addTourWindow = new Popups.ModifyTour();
+            addTourWindow.DataContext = this;
+            _ = addTourWindow.ShowDialog();
+
             if (SelectedTour == null)
                 return;
 
