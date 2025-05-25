@@ -20,18 +20,31 @@ namespace intermediateSWEN2.Viewmodels
         public string NewTourTransportType { get; set; } = "";
 
         public string Error { get; private set; } = "";
-        private Tour? _selectedTour; 
 
-
+        private Tour? _selectedTour;
         public Tour? SelectedTour
         {
             get => _selectedTour;
             set
             {
-                _selectedTour = value;
-                OnPropertyChanged();
+                if (_selectedTour != value)
+                {
+                    _selectedTour = value;
+                    OnPropertyChanged();
+                    SelectedTourChanged?.Invoke(this, EventArgs.Empty);
+                    // Debug output
+                    if (_selectedTour != null)
+                    {
+                        System.Diagnostics.Debug.WriteLine($"SelectedTour: Name={_selectedTour.Name}, From={_selectedTour.From}, To={_selectedTour.To}");
+                    }
+                    else
+                    {
+                        System.Diagnostics.Debug.WriteLine("SelectedTour is null");
+                    }
+                }
             }
         }
+        public event EventHandler? SelectedTourChanged;
 
 
         public ICommand AddTourCommand { get; }
@@ -46,7 +59,6 @@ namespace intermediateSWEN2.Viewmodels
             DeleteTourCommand = new RelayCommand(DeleteTour);
             ModifyTourCommand = new RelayCommand(ModifyTour);
 
-            // Add default tours
             Tours.Add(new Tour
             {
                 Name = "City Explorer",
@@ -54,7 +66,29 @@ namespace intermediateSWEN2.Viewmodels
                 From = "Central Station",
                 To = "Museum District",
                 TransportType = "Walk",
-                Logs = new List<TourLog>()
+                Logs = new List<TourLog>
+    {
+        new TourLog
+        {
+            Id = 1,
+            DateTime = DateTime.Now.AddDays(-2),
+            Comment = "Great weather, lots of fun.",
+            Difficulty = "Easy",
+            TotalDistance = 5,
+            TotalTime = TimeSpan.FromHours(1.5),
+            Rating = 5
+        },
+        new TourLog
+        {
+            Id = 2,
+            DateTime = DateTime.Now.AddDays(-1),
+            Comment = "Crowded but enjoyable.",
+            Difficulty = "Medium",
+            TotalDistance = 5,
+            TotalTime = TimeSpan.FromHours(2),
+            Rating = 4
+        }
+    }
             });
             Tours.Add(new Tour
             {
@@ -63,7 +97,19 @@ namespace intermediateSWEN2.Viewmodels
                 From = "Downtown",
                 To = "Mountain Peak",
                 TransportType = "Car",
-                Logs = new List<TourLog>()
+                Logs = new List<TourLog>
+    {
+        new TourLog
+        {
+            Id = 3,
+            DateTime = DateTime.Now.AddDays(-3),
+            Comment = "Challenging drive, beautiful views.",
+            Difficulty = "Hard",
+            TotalDistance = 50,
+            TotalTime = TimeSpan.FromHours(3),
+            Rating = 5
+        }
+    }
             });
         }
 
