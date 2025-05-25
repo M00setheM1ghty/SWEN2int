@@ -34,9 +34,7 @@ namespace intermediateSWEN2.Viewmodels
         }
 
         public ICommand AddTourCommand { get; }
-        public ICommand OpenAddTourWindowCommand { get; }
         public ICommand DeleteTourCommand { get; }
-        public ICommand OpenModifyTourWindowCommand { get; }
         public ICommand ModifyTourCommand { get; }
 
 

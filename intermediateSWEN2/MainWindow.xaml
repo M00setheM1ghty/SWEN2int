@@ -45,7 +45,7 @@
             </Grid.ColumnDefinitions>
 
             <Border Grid.Column="0" BorderBrush="Gray" BorderThickness="1" Margin="5">
-                <views:TourView />
+                <views:TourView DataContext="{Binding TourViewModel}" />
             </Border>
 
             <Border Grid.Column="1" BorderBrush="Gray" BorderThickness="1" Margin="5">
